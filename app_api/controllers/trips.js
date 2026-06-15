@@ -28,7 +28,42 @@ const tripsFindByCode = async (req, res) => {
     }
 };
 
+const tripsAddTrip = async (req, res) => {
+    try {
+        const trip = await Trip.create(req.body);
+        res.status(201).json(trip);
+    } catch (err) {
+        res.status(400).json(err);
+    }
+};
+
+const tripsUpdateTrip = async (req, res) => {
+    try {
+        const trip = await Trip.findByIdAndUpdate(
+            req.params.tripId,
+            req.body,
+            { new: true }
+        );
+
+        res.status(200).json(trip);
+    } catch (err) {
+        res.status(400).json(err);
+    }
+};
+
+const tripsDeleteTrip = async (req, res) => {
+    try {
+        await Trip.findByIdAndDelete(req.params.tripId);
+        res.status(204).json(null);
+    } catch (err) {
+        res.status(400).json(err);
+    }
+};
+
 module.exports = {
     tripsList,
-    tripsFindByCode
+    tripsFindByCode,
+    tripsAddTrip,
+    tripsUpdateTrip,
+    tripsDeleteTrip
 };
