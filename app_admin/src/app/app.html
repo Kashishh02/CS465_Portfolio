@@ -1,3 +1,9 @@
-<app-trip-list></app-trip-list>
+<app-login></app-login>
 
-<app-trip-edit></app-trip-edit>
+<hr>
+
+@if (authService.isLoggedIn()) {
+  <app-trip-list></app-trip-list>
+
+  <app-trip-edit></app-trip-edit>
+}

@@ -1,0 +1,23 @@
+<h2>Admin Login</h2>
+
+<div>
+  <label>Email</label>
+  <input
+    type="email"
+    [(ngModel)]="email">
+</div>
+
+<div>
+  <label>Password</label>
+  <input
+    type="password"
+    [(ngModel)]="password">
+</div>
+
+<button (click)="onLogin()">
+  Login
+</button>
+
+<div *ngIf="loginFailed">
+  Invalid login
+</div>

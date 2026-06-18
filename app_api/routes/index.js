@@ -2,6 +2,11 @@ var express = require('express');
 var router = express.Router();
 
 const ctrlTrips = require('../controllers/trips');
+const ctrlAuth = require('../controllers/authentication');
+
+router
+    .route('/login')
+    .post(ctrlAuth.login);
 
 router
     .route('/trips')
